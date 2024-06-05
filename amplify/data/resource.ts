@@ -11,6 +11,17 @@ const schema = a.schema({
     .model({
       content: a.string(),
     })
+    .authorization((allow) => [allow.owner()]),
+  Ward: a
+    .model({
+      name: a.string(),
+      class: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  Class: a
+    .model({
+      name: a.string(),
+    })
     .authorization((allow) => [allow.publicApiKey()]),
 });
 
